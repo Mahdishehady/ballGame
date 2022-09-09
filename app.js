@@ -1,3 +1,24 @@
+const left = document.getElementById('left')
+const right = document.getElementById('right')
+const btn = document.getElementById('btn')
+
+right.addEventListener('click', () => {
+   if (currentPosition[0] < 470) {
+      currentPosition[0] += 20
+      makeuser()
+
+   }
+
+})
+left.addEventListener('click', () => {
+   if (currentPosition[0] > 0) {
+      currentPosition[0] -= 20
+      makeuser()
+
+   }
+})
+
+
 const grid = document.querySelector('.grid')
 const scoreDisplay = document.querySelector('#score')
 const blockwidth = 100
@@ -12,7 +33,7 @@ let currentPosition = userStart
 ballstart = [270, 30]
 let ballcurrentPosition = ballstart
 let timerid
-let xDirection = -2
+let xDirection = 2
 let yDirection = 2
 
 
@@ -96,7 +117,22 @@ function moveuser(e) {
 
          }
          break;
+      /*  case rightkey:
+           if (currentPosition[0] < 470) {
+              currentPosition[0] += 20
+              makeuser()
+  
+           }
+           break;
+           case leftkey:
+              if (currentPosition[0] > 0) {
+                 currentPosition[0] -= 20
+                 makeuser()
+     
+              }
+              break;
 
+*/
    }
 }
 document.addEventListener('keydown', moveuser)
@@ -113,7 +149,7 @@ function moveball() {
    drawball()
    checkforcollisions()
 }
-timerid = setInterval(moveball, 10)
+timerid = setInterval(moveball, 20)
 //check for collisions
 function checkforcollisions() {
 
@@ -123,6 +159,7 @@ function checkforcollisions() {
          && ballcurrentPosition[0] < blocks[i].bottomRight[0])
          && ((ballcurrentPosition[1] + ballDiameter) > blocks[i].bottomLeft[1] &&
             ballcurrentPosition[1] < blocks[i].topLeft[1])) {
+
          const allblocks = Array.from(document.querySelectorAll('.block'))
          allblocks[i].classList.remove('block')
          blocks.splice(i, 1)
@@ -153,10 +190,11 @@ function checkforcollisions() {
       scoreDisplay.innerHTML = 'You Lose'
       document.removeEventListener('keydown', moveuser)
 
+
    }
 }
 function changeDirection() {
-   if (xDirection === 2 && yDirection == 2) {
+   if (xDirection === 2 && yDirection === 2) {
       yDirection = -2
       return
    }
@@ -174,4 +212,13 @@ function changeDirection() {
       return
    }
 }
+btn.addEventListener('click', () => {
+   currentPosition = [230, 10]
+   scoreDisplay.innerHTML = '0'
+   ballcurrentPosition = [270, 30]
+   xDirection = 2
+   yDirection = 2
+
+
+})
 
