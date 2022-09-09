@@ -1,0 +1,44 @@
+
+.grid {
+    background-color: rgb(245, 246, 247);
+   
+    margin: 60px;
+    left: 25%;
+    position: absolute;
+    height: 300px;
+    width: 570px;
+    border: solid black 1px;
+}
+
+.block {
+    position: absolute;
+    width: 100px;
+    height: 20px;
+    background-color: blue;
+
+
+}
+
+.user {
+    position: absolute;
+    width: 100px;
+    height: 20px;
+    background-color: rgb(56, 4, 4);
+
+}
+
+.ball {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: rgb(34, 202, 18);
+
+    border-radius: 30px;
+
+}
+
+.scor {
+    text-align: center;
+    font-size: larger;
+    color: rgb(255, 72, 0);
+}
